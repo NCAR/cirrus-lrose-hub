@@ -6,6 +6,7 @@ namespace: ncote
 resources:
   - lrose-jhub-esos.yaml
   - middlewares.yaml
+  - cilium-hub-apiserver.yaml
 
 generatorOptions:
   disableNameSuffixHash: true

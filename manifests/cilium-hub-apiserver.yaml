@@ -1,0 +1,19 @@
+# Cilium assigns the Kubernetes API server / control-plane nodes reserved
+# identities (kube-apiserver / remote-node). CIDR-based egress rules in the
+# z2jh-generated NetworkPolicy (0.0.0.0/0, 10.0.0.0/8, ...) do NOT match those
+# identities, so the hub's kubespawner calls to the API (create PVC, create
+# pod, watch) are dropped and every spawn times out. This additive policy
+# grants the hub egress to the kube-apiserver entity.
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: hub-to-apiserver
+spec:
+  endpointSelector:
+    matchLabels:
+      app: jupyterhub
+      component: hub
+      release: lrose-jhub
+  egress:
+    - toEntities:
+        - kube-apiserver
