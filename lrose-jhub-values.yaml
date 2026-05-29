@@ -26,7 +26,7 @@ hub:
     Authenticator:
       admin_users:
         - ncote
-        - <other-admin-github-logins>   # GitHub logins, not UCAR usernames
+        - NicholasCote   # GitHub logins, not UCAR usernames
       allow_all: false                   # org membership (above) gates access
       allow_existing_users: true
 
