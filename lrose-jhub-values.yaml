@@ -36,7 +36,7 @@ proxy:
 
 ingress:
   enabled: true
-  ingressClassName: traefik
+  ingressClassName: traefik-internal
   annotations:
     cert-manager.io/cluster-issuer: incommon
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
