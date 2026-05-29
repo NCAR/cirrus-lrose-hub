@@ -5,7 +5,7 @@ apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
   name: buffering
-  namespace: lrose-jhub
+  namespace: {{ .Release.Namespace }}
 spec:
   buffering:
     maxRequestBodyBytes: 524288000      # 500 MiB
