@@ -56,7 +56,7 @@ ingress:
   annotations:
     cert-manager.io/cluster-issuer: incommon
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/router.middlewares: "lrose-jhub-buffering@kubernetescrd"
+    traefik.ingress.kubernetes.io/router.middlewares: "ncote-buffering@kubernetescrd"
   hosts:
     - lrose-jhub.k8s.ucar.edu
   tls:
