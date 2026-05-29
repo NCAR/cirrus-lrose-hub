@@ -3,7 +3,7 @@ apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
   name: lrose-jhub-secrets-esos
-  namespace: {{ .Release.Namespace }}
+  namespace: ncote
 spec:
   refreshInterval: 1h
   secretStoreRef:
