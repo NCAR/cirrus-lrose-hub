@@ -1,0 +1,109 @@
+
+hub:
+  # GitHubOAuthenticator reads GITHUB_CLIENT_ID / GITHUB_CLIENT_SECRET /
+  # OAUTH_CALLBACK_URL from the environment natively — so client_id/secret are
+  # injected as env from the Secret, never written into hub.config.
+  extraEnv:
+    GITHUB_CLIENT_ID:
+      valueFrom:
+        secretKeyRef:
+          name: lrose-jhub-secrets
+          key: GITHUB_CLIENT_ID
+    GITHUB_CLIENT_SECRET:
+      valueFrom:
+        secretKeyRef:
+          name: lrose-jhub-secrets
+          key: GITHUB_CLIENT_SECRET
+    OAUTH_CALLBACK_URL: "https://lrose-jhub.k8s.ucar.edu/hub/oauth_callback"
+  config:
+    JupyterHub:
+      authenticator_class: github
+    GitHubOAuthenticator:
+      allowed_organizations:
+        - nsf-lrose
+      scope:
+        - read:org
+    Authenticator:
+      admin_users:
+        - ncote
+        - <other-admin-github-logins>   # GitHub logins, not UCAR usernames
+      allow_all: false                   # org membership (above) gates access
+      allow_existing_users: true
+
+proxy:
+  service:
+    type: ClusterIP
+
+ingress:
+  enabled: true
+  ingressClassName: traefik
+  annotations:
+    cert-manager.io/cluster-issuer: incommon
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: "lrose-jhub-buffering@kubernetescrd"
+  hosts:
+    - lrose-jhub.k8s.ucar.edu
+  tls:
+    - secretName: lrose-jhub-tls-cert
+      hosts:
+        - lrose-jhub.k8s.ucar.edu
+
+singleuser:
+  image:
+    name: hub.k8s.ucar.edu/docker/nsflrose/gateway
+    tag: "20250811"
+  defaultUrl: "/lab"
+  startTimeout: 600
+  extraEnv:
+    NBGITPULLER_DEPTH: "0"
+    START_VIRTUAL_DESKTOP: "1"  
+  cpu:
+    guarantee: 3.5
+    limit: 4
+  memory:
+    guarantee: 12G
+    limit: 16G
+  storage:
+    capacity: 20Gi
+    homeMountPath: /home/jovyan 
+    dynamic:
+      storageClass: ceph-kubepv
+  lifecycleHooks:
+    postStart:
+      exec:
+        command:
+          - "bash"
+          - "-c"
+          - >
+            gitpuller https://github.com/nsf-lrose/lrose-hub main lrose-hub;
+            cp /update_workshop_material.ipynb /home/jovyan;
+            cp /Acknowledgements.ipynb /home/jovyan;
+            [[ -f $HOME/.condarc ]] || cp /.condarc /home/jovyan;
+            [[ -f $HOME/.bashrc ]] || cat /etc/skel/.bashrc /bashrc_lrose >> /home/jovyan/.bashrc;
+            [[ -f $HOME/.profile ]] || cp /.profile /home/jovyan;
+            [[ -f $HOME/.lrose-nightly.ipynb ]] || cp /lrose-nightly.ipynb /home/jovyan;
+            [[ -h $HOME/share ]] || ln -s /share $HOME/share;
+
+  profileList:
+    - display_name: "Low Power"
+      description: "2 GB memory; 1.5 vCPU"
+      kubespawner_override:
+        mem_guarantee: 2G
+        mem_limit: 2G
+        cpu_guarantee: 1.5
+        cpu_limit: 1.5
+    - display_name: "Medium Power"
+      default: true
+      description: "12 GB memory; 3.5 vCPU"
+      kubespawner_override:
+        mem_guarantee: 12G
+        mem_limit: 12G
+        cpu_guarantee: 3.5
+        cpu_limit: 3.5
+    - display_name: "High Power"
+      description: "16 GB memory; 4 vCPU"
+      kubespawner_override:
+        mem_guarantee: 16G
+        mem_limit: 16G
+        cpu_guarantee: 4
+        cpu_limit: 4

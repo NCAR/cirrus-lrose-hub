@@ -1,0 +1,22 @@
+
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: lrose-jhub-secrets-esos
+  namespace: lrose-jhub
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    name: user-ro
+    kind: SecretStore
+  target:
+    name: lrose-jhub-secrets
+  data:
+    - secretKey: GITHUB_CLIENT_ID
+      remoteRef:
+        key: ncote@ucar.edu/lrose-jhub
+        property: github_client_id
+    - secretKey: GITHUB_CLIENT_SECRET
+      remoteRef:
+        key: ncote@ucar.edu/lrose-jhub
+        property: github_client_secret
