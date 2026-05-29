@@ -3,6 +3,10 @@ kind: Kustomization
 
 namespace: ncote
 
+resources:
+  - lrose-jhub-esos.yaml
+  - middlewares.yaml
+
 generatorOptions:
   disableNameSuffixHash: true
 
