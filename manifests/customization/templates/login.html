@@ -29,6 +29,13 @@
 
 {% block main %}
 <div class="login-container">
+    <div class="lrose-brand">
+        <a href="http://lrose.net/index.html" target="_blank">
+            <img src="https://raw.githubusercontent.com/NCAR/cirrus-lrose-hub/main/manifests/customization/static/images/LRose_logo.jpg"
+                 alt="LROSE logo" class="lrose-logo">
+        </a>
+    </div>
+
     <div class="cirrus-header">
         <h1>LROSE JupyterHub</h1>
         <p class="cirrus-subtitle">Lidar Radar Open Software Environment</p>
@@ -55,13 +62,32 @@
         {% endif %}
     </div>
 
+    <div class="lrose-resources">
+        <h4>LROSE Resources</h4>
+        <ul>
+            <li><a href="http://lrose.net/index.html" target="_blank">LROSE Website</a></li>
+            <li><a href="http://wiki.lrose.net/index.php/Main_Page" target="_blank">Documentation Wiki</a></li>
+            <li><a href="http://forum.lrose.net/" target="_blank">User Forum</a></li>
+            <li><a href="https://github.com/nsf-lrose/lrose-hub" target="_blank">LROSE Hub Repo</a></li>
+        </ul>
+    </div>
+
     <div class="cirrus-help-text">
         <p>
             Access requires membership in the
             <a href="https://github.com/nsf-lrose" target="_blank">nsf-lrose</a>
-            GitHub organization. Need help? Visit the
-            <a href="https://github.com/nsf-lrose/lrose-hub" target="_blank">LROSE Hub repo</a>.
+            GitHub organization.
         </p>
+        <div class="partner-logos">
+            <a href="https://ncar.ucar.edu/" target="_blank">
+                <img src="https://raw.githubusercontent.com/NCAR/cirrus-lrose-hub/main/manifests/customization/static/images/NSF-NCAR_Logo_Color-Blue_RGB.png"
+                     alt="NSF NCAR">
+            </a>
+            <a href="https://www.colostate.edu/" target="_blank">
+                <img src="https://raw.githubusercontent.com/NCAR/cirrus-lrose-hub/main/manifests/customization/static/images/CSU_logo.png"
+                     alt="Colorado State University">
+            </a>
+        </div>
     </div>
 </div>
 {% endblock %}

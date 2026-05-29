@@ -119,6 +119,65 @@ body > .container:not(.login-container) {
     overflow: hidden;
 }
 
+/* LROSE brand band */
+.lrose-brand {
+    background: white;
+    text-align: center;
+    padding: 1.75rem 2rem 0.5rem 2rem;
+}
+
+.lrose-logo {
+    max-width: 180px;
+    width: 100%;
+    height: auto;
+}
+
+/* LROSE resources list */
+.lrose-resources {
+    padding: 1.5rem 2rem;
+}
+
+.lrose-resources h4 {
+    color: var(--ncar-blue);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.lrose-resources ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem 1.5rem;
+}
+
+.lrose-resources a {
+    color: var(--ncar-blue);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.lrose-resources a:hover {
+    text-decoration: underline;
+}
+
+/* Partner logos in the help-text band */
+.partner-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.partner-logos img {
+    height: 34px;
+    width: auto;
+}
+
 /* Native Authenticator */
 #login-main.container {
     display: block !important;
