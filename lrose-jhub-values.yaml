@@ -3,6 +3,22 @@ hub:
   # GitHubOAuthenticator reads GITHUB_CLIENT_ID / GITHUB_CLIENT_SECRET /
   # OAUTH_CALLBACK_URL from the environment natively — so client_id/secret are
   # injected as env from the Secret, never written into hub.config.
+  revisionHistoryLimit: 2
+  templatePaths:
+    - /usr/local/share/jupyterhub/custom_templates
+    - /usr/local/lib/python3.12/site-packages/nativeauthenticator/templates/
+  extraVolumes:
+    - name: custom-templates
+      configMap:
+        name: jupyterhub-custom-templates
+    - name: custom-static
+      configMap:
+        name: jupyterhub-custom-static-css
+  extraVolumeMounts:
+    - name: custom-templates
+      mountPath: /usr/local/share/jupyterhub/custom_templates
+    - name: custom-static
+      mountPath: /usr/local/share/jupyterhub/static/custom/css
   extraEnv:
     GITHUB_CLIENT_ID:
       valueFrom:
