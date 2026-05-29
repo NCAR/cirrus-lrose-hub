@@ -163,35 +163,8 @@ body > .container:not(.login-container) {
     text-decoration: none;
 }
 
-.login-details {
-    padding: 0 2rem 2rem 2rem;
-}
-
-.login-details h4 {
-    color: var(--ncar-blue);
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
-
-.login-details p {
-    margin-bottom: 1rem;
-    line-height: 1.6;
-    color: #333;
-}
-
-.login-details a {
-    color: var(--ncar-blue);
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.login-details a:hover {
-    text-decoration: underline;
-}
-
 /* Header Section */
-.login-header {
+.cirrus-header {
     background: linear-gradient(135deg, #0057C2 50%, #00357A 80%);
     padding: 3rem 2rem;
     text-align: center;
@@ -199,7 +172,7 @@ body > .container:not(.login-container) {
     overflow: hidden;
 }
 
-.login-header::before {
+.cirrus-header::before {
     content: '';
     position: absolute;
     top: 0;
@@ -211,7 +184,7 @@ body > .container:not(.login-container) {
     opacity: 0.1;
 }
 
-.login-header h1 {
+.cirrus-header h1 {
     color: white;
     font-size: 1.75rem;
     font-weight: 700;
@@ -220,7 +193,7 @@ body > .container:not(.login-container) {
     z-index: 1;
 }
 
-.login-subtitle {
+.cirrus-subtitle {
     color: rgba(255, 255, 255, 0.9);
     font-size: 0.95rem;
     margin-top: 0.5rem;
@@ -265,27 +238,27 @@ body > .container:not(.login-container) {
 }
 
 /* Help Text Section */
-.jhub-help-text {
+.cirrus-help-text {
     background-color: #f8f9fa;
     padding: 1.5rem 2rem;
     text-align: center;
     border-top: 1px solid #dee2e6;
 }
 
-.jhub-help-text p {
+.cirrus-help-text p {
     margin: 0;
     font-size: 0.9rem;
     color: #6c757d;
     line-height: 1.6;
 }
 
-.jhub-help-text a {
+.cirrus-help-text a {
     color: var(--ncar-blue);
     text-decoration: none;
     font-weight: 500;
 }
 
-.jhub-help-text a:hover {
+.cirrus-help-text a:hover {
     text-decoration: underline;
 }
 
@@ -948,15 +921,15 @@ body > .container:not(.login-container) {
         padding: 1.5rem;
     }
     
-    .login-header {
+    .cirrus-header {
         padding: 2rem 1.5rem;
     }
-    
-    .login-header h1 {
+
+    .cirrus-header h1 {
         font-size: 1.5rem;
     }
-    
-    .login-subtitle {
+
+    .cirrus-subtitle {
         font-size: 0.85rem;
     }
     
