@@ -1,8 +1,5 @@
 
 hub:
-  # GitHubOAuthenticator reads GITHUB_CLIENT_ID / GITHUB_CLIENT_SECRET /
-  # OAUTH_CALLBACK_URL from the environment natively — so client_id/secret are
-  # injected as env from the Secret, never written into hub.config.
   revisionHistoryLimit: 2
   templatePaths:
     - /usr/local/share/jupyterhub/custom_templates
@@ -39,11 +36,11 @@ hub:
       scope:
         - read:org
     Authenticator:
-      admin_users:
-        - ncote
+      admin_users:   # GitHub logins
         - tingyucha
-        - NicholasCote   # GitHub logins, not UCAR usernames
-      allow_all: false                   # org membership (above) gates access
+        - leavesntwigs
+        - NicholasCote
+      allow_all: false                  
       allow_existing_users: true
 
 proxy:
