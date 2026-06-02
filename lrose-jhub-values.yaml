@@ -37,6 +37,9 @@ hub:
         - read:org
     Authenticator:
       admin_users:   # GitHub logins
+        - VarshaReddy1998
+        - khrpcek-ucar
+        - adelmoral2
         - tingyucha
         - leavesntwigs
         - NicholasCote
