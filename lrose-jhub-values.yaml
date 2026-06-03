@@ -37,12 +37,15 @@ hub:
         - read:org
     Authenticator:
       admin_users:   # GitHub logins
+        - jcdehart
         - VarshaReddy1998
         - khrpcek-ucar
         - adelmoral2
         - tingyucha
         - leavesntwigs
         - NicholasCote
+        - julienchastang 
+        - ana-v-espinoza
       allow_all: false                  
       allow_existing_users: true
 
@@ -52,7 +55,7 @@ proxy:
 
 ingress:
   enabled: true
-  ingressClassName: traefik-internal
+  ingressClassName: traefik-external
   annotations:
     cert-manager.io/cluster-issuer: incommon
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
