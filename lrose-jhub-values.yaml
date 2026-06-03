@@ -46,6 +46,7 @@ hub:
         - NicholasCote
         - julienchastang 
         - ana-v-espinoza
+        - mmbell
       allow_all: false                  
       allow_existing_users: true
 
